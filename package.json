@@ -1,0 +1,18 @@
+{
+  "name": "mylove",
+  "version": "1.0.0",
+  "description": "Teehee",
+  "license": "ISC",
+  "author": "Naos",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "puppeteer": "^24.19.0",
+    "whatsapp-web.js": "^1.33.3"
+  }
+}
