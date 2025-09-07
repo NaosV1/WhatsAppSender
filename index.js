@@ -26,13 +26,13 @@ async function logError(message, error = null) {
     }
 }
 
-async function sendSuccess() {
+async function sendSuccess(message = null) {
     try {
         await fetch(DISCORD_WEBHOOK, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                content: `✅ **WhatsApp-Sender Success**\nThe message sent has been successfully delivered!`
+                content: `✅ **WhatsApp-Sender Success**\n${message || "The message sent has been successfully delivered!"}`
             }),
         });
     } catch (err) {
@@ -42,6 +42,7 @@ async function sendSuccess() {
 
 app.listen(port, () => {
     console.log(`API listening on port ${port}`);
+    sendSuccess("API has started and is listening for requests.");
 });
 
 app.post('/send', async (req, res) => {
