@@ -59,6 +59,7 @@ app.post('/send', async (req, res) => {
     }
 
     ISREADY = false;
+    sendSuccess(`\n**__Attempting to send a message__**`);
     console.log(`Starting temporary WhatsApp client to send message to ${to}`);
 
     const tempClient = new Client({
