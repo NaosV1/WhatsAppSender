@@ -6,7 +6,10 @@ const port = 3001;
 
 // Discord webhook (replace with yours)
 require('dotenv').config();
+
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK;
+const MENTION_ENABLED = process.env.MENTION_ENABLED === 'true';
+const MENTION_TEXT = process.env.MENTION_TEXT || '';
 
 let ISREADY = true;
 
@@ -18,7 +21,7 @@ async function logError(message, error = null) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                content: `⚠️ **WhatsApp-Sender Error**\n${message}\n\`\`\`${error ? error.toString() : ""}\`\`\``
+                content: `||${MENTION_ENABLED ? MENTION_TEXT : ""}||\n⚠️ **WhatsApp-Sender Error**\n${message}\n\`\`\`${error ? error.toString() : ""}\`\`\``
             }),
         });
     } catch (err) {
@@ -32,7 +35,7 @@ async function sendSuccess(message = null) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                content: `✅ **WhatsApp-Sender Success**\n${message || "The message sent has been successfully delivered!"}`
+                content: `||${MENTION_ENABLED ? MENTION_TEXT : ""}||\n✅ **WhatsApp-Sender Success**\n${message || "The message sent has been successfully delivered!"}`
             }),
         });
     } catch (err) {
