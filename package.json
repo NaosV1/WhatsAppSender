@@ -8,7 +8,7 @@
   "type": "commonjs",
   "scripts": {
     "test": "test",
-    "start": "node index.js"
+    "start": "node index.js "
   },
   "dependencies": {
     "express": "^5.1.0",
