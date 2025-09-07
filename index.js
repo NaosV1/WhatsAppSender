@@ -58,7 +58,7 @@ app.post('/send', async (req, res) => {
     console.log(`Starting temporary WhatsApp client to send message to ${to}`);
 
     const tempClient = new Client({
-        puppeteer: { headless: true },
+        puppeteer: { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] },
         authStrategy: new LocalAuth({ clientId: "MYID" }), // fixed session
     });
 
